@@ -1,0 +1,2 @@
+filename, xmin, xmax, ymin, ymax
+waldo1.jpg, 530, 557, 358, 400

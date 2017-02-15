@@ -11,7 +11,7 @@ end
 post '/' do
 	xCor = params["waldoX"].to_i
 	yCor = params["waldoY"].to_i
-	if checkLocation(xCor, yCor)
+	if checkLocation(xCor, yCor, 1)
 		erb :waldoYes
 	else 
 		erb :waldoNo
