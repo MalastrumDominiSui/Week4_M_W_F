@@ -1,0 +1,35 @@
+body{
+	background-repeat: no-repeat;
+	color: black;
+	text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;;
+}
+
+h1 {
+	margin: 10px;
+}
+
+
+/*this is the dimmer window once you have found Waldo*/
+#dimmer {
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	height: 750px;
+	width: 1024px;
+	top:0px;
+	left:0px;
+	background-color: black;
+	background:rgba(0,0,0,0.4);
+}
+
+#waldo_spot{
+	position: absolute;
+	height: 75px;
+	width: 75px;
+	top:355px;
+	left:500px;
+	border-radius:75%;
+	background-color: none;
+	background:rgba(255,255,255,0.5)
+
+}
