@@ -3,13 +3,13 @@ require "CSV"
 require "JSON"
 
 def addMondToCSV(params)
-	mondArray = JSON.parse(params["mond"])
-	##mondArray is an 4x4 array of strings here
+	mondJSON = JSON.parse(params["mond"])
+	##mondJSON is a JSON with 4 objects e.g {row1 => ["white", "yellow", "red", "blue"]}
 	i = 0
 	mondrianNewCSV = []
 
-	while i < mondArray.length
-		mondrianNewCSV[i] = mondArray[i].to_s
+	while i < mondJSON.length
+		mondrianNewCSV[i] = mondJSON[i].to_s
 		i+=1
 	end
 

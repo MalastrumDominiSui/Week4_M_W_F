@@ -5,7 +5,7 @@ window.addEventListener("load", function(){
 	var colors = document.getElementsByClassName("color");
 	var rOnBon = document.getElementById("row_1_box_1");
 	var allRows = document.getElementsByClassName("row");
-	//array of rows for calling recordMondrian
+	//array of rows for calling recordMondrianJSON
 	var $rowOne = document.getElementsByClassName("row_1");
 	var $rowTwo = document.getElementsByClassName("row_2");
 	var $rowThree = document.getElementsByClassName("row_3");
@@ -39,14 +39,16 @@ window.addEventListener("load", function(){
 
 
 	// takes all rows in their current state and records their colors in a 2 dimensional array
-	function recordMondrian(){
-		mond = [
-			rowArray($rowOne),
-			rowArray($rowTwo),
-			rowArray($rowThree),
-			rowArray($rowFour),
+	//not really sure if this is the structure the data should take.  The result has too many string quotes
+	// in the CSV
+	function recordMondrianJSON(){
+		mondJSON = [
+			{row1: rowArray($rowOne)},
+			{row2: rowArray($rowTwo)},
+			{row3: rowArray($rowThree)},
+			{row4: rowArray($rowFour)},
 		]
-		return mond
+		return mondJSON
 	}
 
 
@@ -67,9 +69,9 @@ window.addEventListener("load", function(){
 	}
 	//an Event Listener on the Save button that 
 	saveBtn.addEventListener("click",function(){
-		var mondArrayStr = JSON.stringify(recordMondrian());
+		var mondJSONstr = JSON.stringify(recordMondrianJSON());
 		var request = new XMLHttpRequest();
-		request.open("POST", "/?mond="+ mondArrayStr);
+		request.open("POST", "/?mond="+ mondJSONstr);
 		request.send();
 
 	});

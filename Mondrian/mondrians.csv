@@ -1,3 +1,4 @@
-ROW1,ROW2,ROW3,ROW4
+row1,row2,row3,row4
 "[""white"", ""red"", ""white"", ""red""]","[""blue"", ""red"", ""yellow"", ""blue""]","[""white"", ""yellow"", ""blue"", ""white""]","[""red"", ""blue"", ""yellow"", ""red""]"
 "[""red"", ""white"", ""red"", ""red""]","[""white"", ""yellow"", ""red"", ""red""]","[""blue"", ""yellow"", ""blue"", ""white""]","[""yellow"", ""white"", ""blue"", ""blue""]"
+"{""row1""=>[""red"", ""yellow"", ""white"", ""blue""]}","{""row2""=>[""yellow"", ""red"", ""blue"", ""yellow""]}","{""row3""=>[""white"", ""blue"", ""red"", ""white""]}","{""row4""=>[""blue"", ""yellow"", ""white"", ""red""]}"
