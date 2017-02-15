@@ -1,2 +1,3 @@
 ROW1,ROW2,ROW3,ROW4
-[yellow,blue,white, white],[white,blue,yellow,blue],[white,white,blue,white],[white,red,yellow,yellow]
+"[""white"", ""red"", ""white"", ""red""]","[""blue"", ""red"", ""yellow"", ""blue""]","[""white"", ""yellow"", ""blue"", ""white""]","[""red"", ""blue"", ""yellow"", ""red""]"
+"[""red"", ""white"", ""red"", ""red""]","[""white"", ""yellow"", ""red"", ""red""]","[""blue"", ""yellow"", ""blue"", ""white""]","[""yellow"", ""white"", ""blue"", ""blue""]"

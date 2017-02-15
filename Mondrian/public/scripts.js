@@ -1,6 +1,3 @@
-
-
-
 window.addEventListener("load", function(){
 
 	// dealing with clicking of colors
@@ -64,20 +61,17 @@ window.addEventListener("load", function(){
 			}
 
 		}
-		console.log(colorStrArr);
+		// console.log(colorStrArr);
 		return colorStrArr;
 
 	}
-
-	//takes array of Mondrian and saves it to CSV file
-	function saveMondrian(){
-
-	}
-
-	//add event listener to save button
+	//an Event Listener on the Save button that 
 	saveBtn.addEventListener("click",function(){
-		console.log(recordMondrian());
-		// console.log(recordMondrian()[0]);
+		var mondArrayStr = JSON.stringify(recordMondrian());
+		var request = new XMLHttpRequest();
+		request.open("POST", "/?mond="+ mondArrayStr);
+		request.send();
+
 	});
 
 });
