@@ -8,13 +8,36 @@
 
 
 <body style="background-image: url(/waldo1.jpg)">
-	<h1>Find Waldo</h1>
+	<!-- timer -->
+	<div class="wrapper">
+		<h1>Find Waldo</h1>
+		<p id="time"><span id="seconds">00</span>:<span id="tens">00</span></p>
+	</div> 
+
+	<!-- dimmed background -->
 	<div class = "overlay" style="display: none">
 		<div id="dimmer">
 		</div>
 		<div id="waldo_spot">		 		
 		</div>
 	</div>
+
+	<!-- Modal content -->
+	<div id ="myModal" class="modal-content" style="display: none">
+		<span class="close">&times;</span>
+		<p>CONGRATULATIONS: YOU FOUND WALDO</p>
+		<p>Time:</p>
+	</div>
+
+	<div id = "otherModal" class="modal-content" style="display: none">
+		<p>High Scores:</p>
+		<ul>
+		</ul>
+
+	</div>
+
+
+
 
 </body>
 </html>

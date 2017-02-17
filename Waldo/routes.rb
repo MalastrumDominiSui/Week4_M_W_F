@@ -17,3 +17,12 @@ post '/' do
 		erb :waldoNo
 	end
 end
+
+post '/save' do
+	score = params["time"]
+	score = score.split(":")
+	score = score.join()
+	storeScore(score)
+	@scorelist = liScores(readScores())
+	erb :highscore
+end

@@ -1,4 +1,5 @@
 body{
+	font-family: sans-serif;
 	background-repeat: no-repeat;
 	color: black;
 	text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;;
@@ -11,6 +12,7 @@ h1 {
 
 /*this is the dimmer window once you have found Waldo*/
 #dimmer {
+	z-index:1;
 	padding: 0px;
 	margin: 0px;
 	position: absolute;
@@ -23,6 +25,7 @@ h1 {
 }
 
 #waldo_spot{
+	z-index:1;
 	position: absolute;
 	height: 75px;
 	width: 75px;
@@ -32,4 +35,45 @@ h1 {
 	background-color: none;
 	background:rgba(255,255,255,0.5)
 
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+	font-family: sans-serif;
+	z-index:2;
+	position: absolute;
+	left: 345px;
+	height: 95px;
+	width: 225px;
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#otherModal {
+	position: absolute;
+	left: 745px;
+	height: 225px;
+	width: 150px;
+	padding-top: 5px;
+
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
