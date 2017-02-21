@@ -5,55 +5,100 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-<h1>Using Interactive Javascript with existing HTML and CSS</h1>
+<h1>Making a Mondrian Interactive Using Javascript</h1>
 
-<p>So you want to be a coder?  Perhaps you know a little HTML and CSS, maybe a little Javascript?  Perhaps you would like to learn a little backend as well?  Perhaps you don't know any of the above and simply want to learn.  Well this is the place for you to do that, and follow along.</p>
+<p>So you want to be a coder?  Perhaps you know a little HTML and CSS, maybe a little Javascript?  Perhaps you would like to learn a little backend as well?  Perhaps you don't know any of the above and simply want to learn.  Well this is the place for you to do that, and follow along.</p><br>
 
-<p>For this tutorial I will start out in Javascript, I recommend using Chrome and it's developer tools to debug Javascript.  Later on I will build a barebones server using a little bit of Ruby in the Sinatra Framework. You can find out about Ruby and Sinatra <a href="http://www.sinatrarb.com/intro.html">Here</a> </p> 
+<p>For this tutorial I will start out in Javascript, I recommend using Chrome and it's developer tools to debug Javascript. Later on we will do a little basic server action in Ruby with the Sinatra framework.  These links are not necessary, but provide an exterior resource towards a deeper understanding: </p><br>
+<ul>
+	<li>
+		<a href="https://www.w3schools.com/js/default.asp">W3Schools JS Tutorial</a>
+	</li>
+	<li>
+		<a href="https://www.codecademy.com/learn/ruby">Codecademy's Ruby Tutorial</a>
+	</li>
+	<li>
+		<a href="http://www.sinatrarb.com/intro.html">Information on Sinatra</a>
+	</li>
+</ul><br>
+ 
 
-<p>It's nice to start with some code already written (and functioning) isn't it? Follow this link and copy the files and file structure into your working directory. <a href=""></a></p>
+<p> On to the Coding! It's nice to start with some code already written (and functioning) isn't it? Follow this link and copy the files and file structure into your working directory: <a href="https://github.com/MalastrumDominiSui/Week4_M_W_F/tree/master/Mondrian/mondrianTutorial/public/original">Here</a>  Open the html file via your favorite command line and have a look.  You should see this:<br>
+<img src="public/original/mondrian.png"> <br> Our very first step will be to make a Javascript file, e.g. "scripts.js" in the same directory as our html file.  Make sure to include this in our HTML by typing this in the header along with the  stylesheet: </p><script src="https://gist.github.com/MalastrumDominiSui/3ce5becc40fb37042a95365e1654f334.js"></script>
 
-<LINK>
 
-<p>Open the html file via your favorite command line and have a look.  You should see this: </p>
-<pic>
 
-<p>Our first portion of this tutorial will be creating some front end functionality via Javascript.  The JS file is empty and we will fill it with the elements we need so that when we click on a color, and then click a square, the corresponding color will fill the square.</p>
+<p>Our first portion of this tutorial will be creating some front end functionality via Javascript.  The JS file is empty and we will fill it with the elements we need so that when we click on a color, and then click a square, the corresponding color will fill the square.</p><br>
 
-<p>Often in programming it helps to break larger problems into smaller ones.  Let's first target the idea of changing color.  We can find any element within our HTML file and see it looks like this:</p>
+<p>Often in programming it helps to break larger problems into smaller ones.  Let's first try to change the color of just one element.  Well Javascript is great at this.  Looking at the HTML we can see our first row of Mondrian Squares:</p>
+<script src="https://gist.github.com/MalastrumDominiSui/48a9b8ee07525609be4885218ae4ec18.js"></script>
+<p>We want to target these elements, but there is a catch: to target any elements in the window, we first need to make sure the window loads.  So we first load the window, then we collect our elements of the first row:<br><br>
+<code>window.addEventListener("load", function(){   //waits for window to load<br>
+&emsp;&emsp;  var rowOne = document.getElementsByClassName("row_1");<br>
+});</code> </p><br>
 
-insert code
+<p>To change the color, lets set a variable:<br>
+<br>
+<code> currentColor = "red";</code><br>
+<br>
+Last but not least we need to "listen" for an event (namely, a click), when it happens on our Mondrian.  But right now let's just focus on one piece, the top left square.<br>
+<br>
+In our collection<code> rowOne</code>, we know the first element of it will be <code>rowOne[0]</code>.  So to listen for the user to click on this square we use event listener again, and it looks like this:<br>
+<br>
+<code>
+	rowOne[0].addEventListener("click",function(){<br>
+&emsp;&emsp;	this.style.background = currentColor;<br>
+</code><br>
+So this literally reads: "Hey Javascript. Listen for a click on our first square of our Mondrian.  Then when we click, perform this function."<br><br>
+This style of function in Javascript is known as an "anonymous function", because we never give it a name.  The function is passed as a parameter of the "addEventListener" call, and the anonymous function takes no paramaters, because it automatically is accepting the event(in our case: the click on the Mondrian square).
+<br><br>
+Make sure you verify that it works.  Remember that <code>currentColor</code> is currently hard coded as red. You can change this to anything you want.  But if you are following true Mondrian style, you will only use primary colors.
+</p>
+<br>
+<p>So the next step to change the color of all our "square" nodes will be to add event listeners on all of them.  To do this we should collect them using <code>document.get..</code> And while we are at it, why don't we <code> document.get </code> our color palette nodes as well:<br>
+<br>
+<code>
+	var colors = document.getElementsByClassName("color");<br>
+	var allRows = document.getElementsByClassName("row");<br>
+</code>
+<br><br>
+What better way to add an event listener to <code>allRows</code> , than to use a foor loop! It should look something like this:<br><br>
+<code>
+	//add event listener to all squares within Mondrian <br>
+	for (var i = 0; i < allRows.length; i++) {<br>
+&emsp;&emsp;allRows[i].addEventListener("click",function(){<br>
+&emsp;&emsp;&emsp;&emsp;this.style.background = currentColor;<br>
+&emsp;&emsp;});<br>
+	}<br><br>
+</code>
+What better time to verify this is working!  our <code>currentColor</code> should still be red.  Clickety clickety click!  Make sure it works before you go any further!<br>
+</p>
+<br>
+<p>
+We still want a click to trigger the color stored in our <code>currentColor</code> variable.  But wouldn't it be nice if we could change the current color based on the most recently clicked color on our color palette?  Sounds like the job for another set of event listeners!<br><br>
+<code>
+	//add event listeners to all color buttons, calls setColor <br>
+for (var i = 0; i < colors.length; i++) { <br>
+&emsp;&emsp;colors[i].addEventListener("click",setColor); <br>
+}<br><br>	
+</code>
 
-<p>we can change the color by saying</p>
- this
-<p>in Javascript however we want to access these as nodes via the Document Object Model.  If you are unfamiliar with the idea of the DOM, you can learn more about it here:</p>
-<a href="">link</a>
+We used a bit of wishful thinking here.  Sometimes wishful thinking can go a long way when we program.  We <em>want</em> a function that will <em>set</em> the color when we click on our different color buttons.  But this is easy, right? We have at least two ways we could get this in Javascript.  One is to take a node from our variable collection <code>colors</code> and check <code>event.style.backgroundColor</code>.  This should work.  Another way to do this is to realize in our HTML that each color on our palette has a unique ID with the strings:</p>
+<script src="https://gist.github.com/MalastrumDominiSui/e20e7ec3b326d213f39fb045a10732fc.js"></script>
+<p> Alternatively, we could simply access the color of an element that we click on by using <code>event.target.id</code> !  Remember that <code>event</code>, or commonly seen as simply <code>e</code> is a way to reference the current "thing" we just listened to.  When we called this eventListener, and dreamt of our function setColor, it will only accept one thing by definition, which is the event of clicking.  This event contains a useful piece of information which is <em>what</em> we clicked on.  In Javascript it is <code>event.target</code>.  So our <code>setColor</code> function will look like this:<br>
+<br>
 
-<p>So our first step to change the color of our nodes will be to collect them all. And while we are at it, why don't we also collect our color palette items as well:</p>
-insert code
+<code>
+	function setColor(e){<br>
+&emsp;&emsp;currentColor = e.target.id;<br>
+	}<br>
+</code> 
+</p>
+<br>
 
-<p>So now we have found these things.  Breaking the larger problem down, let's find a way to turn just one of our squares red.  When items are clicked in Javascript a really great tool in our toolbelt is called "eventListener".  So we can essentially listen for an event to happen, like a click, a keypress, and a whole plethora of things.  To learn more about eventListener, click</p>
-<a href="">link</a>
+<p>Now we have set up event listeners for all the color buttons, and when we click any color button, it stores our variable <code>currentColor</code> as the most recently clicked color.  At this point we expect everything to work ,so make sure you verify it works! Click click, clickety click!</p><br>
 
-<p>So to listen to one square we can write something like this:</p>
-insert code
-<p>Notice that we use [0] because we captured all the elements from the X class.</p>
-
-<p>Now lets just set a variable and hard code it to be "red".
-With some additional simple lines viola: </p>
-insert code
-
-<p>Now we should verify that clicking our on our box works.  If you are curious you can press Option + Apple + J on Mac or it should be Ctrl+Shift+J on PC.</p>
-
-<p>There you have it.  Now the small problem is solved. Time to generalize.  We can change every boxes color by listening to each div element.  This means adding an event listener to each one one by one from our array of Nodes.  This sounds like the job of a FOR loop.  Now our entire block of JS code should look like this:</p>
-insert code
-
-<p>Make sure you verify it works! Click click, clickety click!</p>
-
-<p>Now all that is left to do is make sure we can select our color to use on our Mondrian painting.  So we already know how to listen for clicks.  Now lets define a click listener for our color palette, so that when we click, it temporarily saves the color most recently clicked.  It should look like this:</p>
-insert code
-
-<p>Now when we click on a color in our palette, the variable is saved so that we are inserting that color string into the CSS properties of our Mondrian!  Painting has never been so easy!  Well ok maybe this isn't as easy as actually painting, but it certainly shows the power of Javascript in combination with established HTML and CSS.</p>
+<p> Painting has never been so easy!  Well ok maybe this isn't as easy as actually painting, but it certainly shows the power of Javascript in combination with established HTML and CSS.</p>
 
 </body>
 </html>

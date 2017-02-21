@@ -38,6 +38,7 @@ window.addEventListener("load",function() {
 	function grabScore(){
 		var timeStr = timePassed.innerText;
 		var request = new XMLHttpRequest();
+		debugger;
 		request.open("POST","/save?time=" + timeStr);
 		request.addEventListener("load", formatHighScores)
 		request.send();

@@ -1,33 +1,33 @@
 window.addEventListener("load", function(){
 
 	// dealing with clicking of colors
-	var $currentColor = "";
+	var currentColor = "";
 	var colors = document.getElementsByClassName("color");
-	var rOnBon = document.getElementById("row_1_box_1");
 	var allRows = document.getElementsByClassName("row");
 	//array of rows for calling recordMondrianJSON
-	var $rowOne = document.getElementsByClassName("row_1");
-	var $rowTwo = document.getElementsByClassName("row_2");
-	var $rowThree = document.getElementsByClassName("row_3");
-	var $rowFour = document.getElementsByClassName("row_4");
+	var rowOne = document.getElementsByClassName("row_1");
+	var rowTwo = document.getElementsByClassName("row_2");
+	var rowThree = document.getElementsByClassName("row_3");
+	var rowFour = document.getElementsByClassName("row_4");
 	//save button
 	var saveBtn = document.getElementById("save_button");
 
+	//add event listener to all squares within Mondrian
+	for (var i = 0; i < allRows.length; i++) {
+		allRows[i].addEventListener("click",function(){
+			this.style.background = currentColor;
+		});
+	}
 
 	//FUNCTIONS FOR MONDRIAN COLOR CHANGING
 	// for a given event (clicking on color box), sets placeholder to the box color so the mondrians "remember" the last one
 	function setColor(e){
-		$currentColor = e.target.id;
+		currentColor = e.target.id;
 	}
+
 	//add event listeners to all color buttons, calls setColor
 	for (var i = 0; i < colors.length; i++) {
 		colors[i].addEventListener("click",setColor);
-	}
-	//add event listener to all squares within Mondrian
-	for (var i = 0; i < allRows.length; i++) {
-		allRows[i].addEventListener("click",function(){
-			this.style.background = $currentColor;
-		});
 	}
 
 	//FUNCTIONS FOR SAVING
@@ -43,10 +43,10 @@ window.addEventListener("load", function(){
 	// in the CSV
 	function recordMondrianJSON(){
 		mondJSON = [
-			{row1: rowArray($rowOne)},
-			{row2: rowArray($rowTwo)},
-			{row3: rowArray($rowThree)},
-			{row4: rowArray($rowFour)},
+			{row1: rowArray(rowOne)},
+			{row2: rowArray(rowTwo)},
+			{row3: rowArray(rowThree)},
+			{row4: rowArray(rowFour)},
 		]
 		return mondJSON
 	}

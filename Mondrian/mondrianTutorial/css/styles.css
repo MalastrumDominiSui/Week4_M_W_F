@@ -11,17 +11,20 @@ body {
 
 h1{
 	padding: 20px;
-	align-content: center;
+	text-align: center;
 	font-size: 27px;
 	background-color: #DCDCDC;
 	box-shadow:
+    0 0 0 5px hsl(0, 0%, 45%),
     0 0 0 10px hsl(0, 0%, 50%),
+    0 0 0 15px hsl(0, 0%, 55%),
     0 0 0 20px hsl(0, 0%, 60%),
+    0 0 0 25px hsl(0, 0%, 65%),
     0 0 0 30px hsl(0, 0%, 70%),
+    0 0 0 35px hsl(0, 0%, 75%),
     0 0 0 40px hsl(0, 0%, 80%),
+    0 0 0 45px hsl(0, 0%, 85%),
     0 0 0 50px hsl(0, 0%, 90%);
-
-
 }
 
 p{
@@ -29,18 +32,25 @@ p{
 	padding: 17px;
 	border-radius: 5px;
 	background-color: #c4e8ed;
+	line-height: 23px;
 }
 
 p a{
+	font-size: 19px;
 	background-color: white;
 	padding: 2px;
-	border-style: solid;
+	border-style: dashed;
 	border-width: 1px;
 	border-color: black;
+	border-radius: 4px;
 }
 
 p a:hover{
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 4px;
+}
+
+code {
+	font-size: 16px;
 }
