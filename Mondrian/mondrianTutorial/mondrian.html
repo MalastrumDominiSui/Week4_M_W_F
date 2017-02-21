@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mondrian Tutorial</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+<h1>Using Interactive Javascript with existing HTML and CSS</h1>
+
+<p>So you want to be a coder?  Perhaps you know a little HTML and CSS, maybe a little Javascript?  Perhaps you would like to learn a little backend as well?  Perhaps you don't know any of the above and simply want to learn.  Well this is the place for you to do that, and follow along.</p>
+
+<p>For this tutorial I will start out in Javascript, I recommend using Chrome and it's developer tools to debug Javascript.  Later on I will build a barebones server using a little bit of Ruby in the Sinatra Framework. You can find out about Ruby and Sinatra <a href="http://www.sinatrarb.com/intro.html">Here</a> </p> 
+
+<p>It's nice to start with some code already written (and functioning) isn't it? Follow this link and copy the files and file structure into your working directory. <a href=""></a></p>
+
+<LINK>
+
+<p>Open the html file via your favorite command line and have a look.  You should see this: </p>
+<pic>
+
+<p>Our first portion of this tutorial will be creating some front end functionality via Javascript.  The JS file is empty and we will fill it with the elements we need so that when we click on a color, and then click a square, the corresponding color will fill the square.</p>
+
+<p>Often in programming it helps to break larger problems into smaller ones.  Let's first target the idea of changing color.  We can find any element within our HTML file and see it looks like this:</p>
+
+insert code
+
+<p>we can change the color by saying</p>
+ this
+<p>in Javascript however we want to access these as nodes via the Document Object Model.  If you are unfamiliar with the idea of the DOM, you can learn more about it here:</p>
+<a href="">link</a>
+
+<p>So our first step to change the color of our nodes will be to collect them all. And while we are at it, why don't we also collect our color palette items as well:</p>
+insert code
+
+<p>So now we have found these things.  Breaking the larger problem down, let's find a way to turn just one of our squares red.  When items are clicked in Javascript a really great tool in our toolbelt is called "eventListener".  So we can essentially listen for an event to happen, like a click, a keypress, and a whole plethora of things.  To learn more about eventListener, click</p>
+<a href="">link</a>
+
+<p>So to listen to one square we can write something like this:</p>
+insert code
+<p>Notice that we use [0] because we captured all the elements from the X class.</p>
+
+<p>Now lets just set a variable and hard code it to be "red".
+With some additional simple lines viola: </p>
+insert code
+
+<p>Now we should verify that clicking our on our box works.  If you are curious you can press Option + Apple + J on Mac or it should be Ctrl+Shift+J on PC.</p>
+
+<p>There you have it.  Now the small problem is solved. Time to generalize.  We can change every boxes color by listening to each div element.  This means adding an event listener to each one one by one from our array of Nodes.  This sounds like the job of a FOR loop.  Now our entire block of JS code should look like this:</p>
+insert code
+
+<p>Make sure you verify it works! Click click, clickety click!</p>
+
+<p>Now all that is left to do is make sure we can select our color to use on our Mondrian painting.  So we already know how to listen for clicks.  Now lets define a click listener for our color palette, so that when we click, it temporarily saves the color most recently clicked.  It should look like this:</p>
+insert code
+
+<p>Now when we click on a color in our palette, the variable is saved so that we are inserting that color string into the CSS properties of our Mondrian!  Painting has never been so easy!  Well ok maybe this isn't as easy as actually painting, but it certainly shows the power of Javascript in combination with established HTML and CSS.</p>
+
+</body>
+</html>
